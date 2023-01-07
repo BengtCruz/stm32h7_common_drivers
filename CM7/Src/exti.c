@@ -46,3 +46,13 @@ static void exti2_callback(void)
 
 	rte_reset_greenled();
 }
+
+void EXTI2_IRQHandler(void)
+{
+	if((EXTI->PR1 & LINE2) != 0)
+	{
+		EXTI->PR1 |= LINE2;
+
+		exti_callback();
+	}
+}
