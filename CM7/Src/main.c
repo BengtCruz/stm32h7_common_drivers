@@ -23,13 +23,14 @@ int main(void)
 
 	gpio_init();
 
+	pb2_exti_init();
 
     /* Loop forever */
 	while(1)
 	{
-		if(rte_read_pb2())
+		/*if(rte_read_pb2())
 			rte_set_greenled();
 		else
-			rte_reset_greenled();
+			rte_reset_greenled();*/
 	}
 }
