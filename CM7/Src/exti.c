@@ -9,6 +9,8 @@
 
 #include "exti.h"
 
+static void exti2_callback(void);
+
 void pb2_exti_init(void)
 {
 	/* Disable global interrupt */
@@ -33,4 +35,14 @@ void pb2_exti_init(void)
 	NVIC_EnableIRQ(EXTI2_IRQn);
 
 	__enable_irq();
+}
+
+static void exti2_callback(void)
+{
+
+	rte_set_greenled();
+
+	for(int i = 0; i < 10000000; i++);
+
+	rte_reset_greenled();
 }
